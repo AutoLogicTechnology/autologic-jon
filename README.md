@@ -2,6 +2,10 @@
 
 This role deploys the JON Agent. It's simple by nature, and just get the agent in place, as well as a configuration file.
 
+## Version
+
+0.0.0-ALPHA
+
 ## Requirements
 
 TBC.
