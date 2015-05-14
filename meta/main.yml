@@ -2,7 +2,7 @@
 galaxy_info:
   author: Michael Crilly (mike@autologic.cm)
   description: JON Agent deployment Role
-  company: Queensland Tertiary Admissions Centre 
-  license: Copyright (C) 2015 Queensland Tertiary Admissions Centre 
+  company: Autologic Technology Ltd
+  license: MIT
   min_ansible_version: 1.9.1
 dependencies: []
