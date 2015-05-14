@@ -1,10 +1,16 @@
 ---
 
+- name: Check if we've already had a run and downloaded the agent 
+  stat:
+    path: "/tmp/{{jon_agent_repository_file}}"
+  register: have_archive
+
 - name: Download the JON agent from our repository
   get_url:
     url: "{{jon_agent_repository_url}}/{{jon_agent_repository_file}}"
     dest: "/tmp/"
     mode: 0600
+  when: not have_archive.stat.exists
 
 - name: Decompress archive
   unarchive:
