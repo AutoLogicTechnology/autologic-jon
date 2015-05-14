@@ -1,0 +1,7 @@
+---
+
+- name: Add our JBOSS user to the system
+  user:
+    name: "{{autologic_jon_username}}"
+    uid: "{{autologic_jon_username_uid}}"
+    state: "present"

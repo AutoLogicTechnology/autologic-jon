@@ -1,0 +1,7 @@
+---
+
+- name: Start and enable (persist) the JON Agent
+  service:
+    name: "{{autologic_jon_service_name}}"
+    state: "started"
+    enabled: true

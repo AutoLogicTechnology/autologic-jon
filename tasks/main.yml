@@ -1,7 +1,17 @@
 ---
 
+- include: user.yml
+  when: autologic_jon_manage_user
+  tags: autologic_jon_user_play
+
 - include: software.yml
-  when:
-    - jon_manage_software
-  tags:
-    - jon_software_play
+  when: autologic_jon_manage_software
+  tags: autologic_jon_software_play
+
+- include: configuration.yml
+  when: autologic_jon_manage_configuration
+  tags: autologic_jon_configuration_play
+
+- include: service.yml
+  when: autologic_jon_manage_service
+  tags: autologic_jon_service_play

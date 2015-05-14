@@ -2,18 +2,26 @@
 
 - name: Check if we've already had a run and downloaded the agent 
   stat:
-    path: "/tmp/{{jon_agent_repository_file}}"
+    path: "/tmp/{{autologic_jon_agent_repository_file}}"
   register: have_archive
 
 - name: Download the JON agent from our repository
   get_url:
-    url: "{{jon_agent_repository_url}}/{{jon_agent_repository_file}}"
+    url: "{{autologic_jon_agent_repository_url}}/{{autologic_jon_agent_repository_file}}"
     dest: "/tmp/"
     mode: 0600
   when: not have_archive.stat.exists
 
+- name: Check if we've already extracted the archive 
+  stat:
+    path: "{{autologic_jon_agent_extract_to_path}}/jon-agent"
+  register: have_extracted_archive
+
 - name: Decompress archive
   unarchive:
-    src: "/tmp/{{jon_agent_repository_file}}"
-    dest: "/u01/"
+    src: "/tmp/{{autologic_jon_agent_repository_file}}"
+    dest: "{{autologic_jon_agent_extract_to_path}}"
     copy: no
+    owner: "{{autologic_jon_username}}"
+    group: "{{autologic_jon_username}}"
+  when: not have_extracted_archive.stat.exists

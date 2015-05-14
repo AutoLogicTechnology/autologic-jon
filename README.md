@@ -4,32 +4,37 @@ This role deploys the JON Agent. It's simple by nature, and just get the agent i
 
 ## Version
 
-0.0.0-ALPHA
+0.1.0
 
 ## Requirements
 
-TBC.
+- JON requires a JVM. I've tested the OpenJDK 1.7.1 as working on CentOS 6.6;
+- A "jboss" user should be created, but this is configurable incase your environment is different;
+- You'll have to provide a JON archive your self, from RedHat;
 
 ## Role Variables
 
 ```yaml
 ---
-jon_manage_software: true
-jon_manage_services: true
+autologic_jon_manage_software: true
+autologic_jon_manage_service: true
+autologic_jon_manage_configuration: true
+autologic_jon_manage_user: true
 
-jon_agent_repository_url: "http://some/url/"
-jon_agent_repository_file: "jon-agent-version.zip"
+autologic_jon_agent_repository_url: "http://some/url/"
+autologic_jon_agent_repository_file: "jon-agent.tar.gz"
+autologic_jon_agent_extract_to_path: "/jon-agent"
 
-jon_rhq_configuration:
-  # You should actual configuration flags here;
-  # These are written to the config file exactly as you see them here.
+autologic_jon_username: "jboss"
+autologic_jon_username_uid: "5000"
 
-  RHQ_AGENT_HOME: "/jboss/jon-agent/rhq-agent"
-  RHQ_JAVA_HOME: "/usr/java/jdk/"
-  RHQ_AGENT_START_COMMAND: "su -m jboss -c '${RHQ_AGENT_HOME}/bin/rhq-agent.sh'"
-  RHQ_AGENT_UMASK: 007
-  # ...
+autologic_jon_service_name: "rhq-agent-wrapper"
+autologic_jon_rhq_configuration: False
 ```
+
+### Notes
+
+- The ```username_uid``` flag is there as some people like to keep UIDs consistent across their estate.
 
 ## Dependencies
 

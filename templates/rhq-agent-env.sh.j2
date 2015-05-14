@@ -1,2 +1,5 @@
-
-
+{% if autologic_jon_rhq_configuration != False %}
+{% for key,value in autologic_jon_rhq_configuration.iteritems() %}
+{{key}}="{{value}}"
+{% endfor %}
+{% endif %}

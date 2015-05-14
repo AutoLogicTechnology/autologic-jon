@@ -1,0 +1,11 @@
+---
+- hosts: all
+  sudo: yes
+  pre_tasks:
+    - name: Install OpenJDK 7
+      yum:
+        name: "java-1.7.0-openjdk"
+        state: "present"
+
+  roles:
+    - autologic-jon 

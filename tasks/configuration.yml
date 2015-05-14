@@ -1,0 +1,15 @@
+---
+
+- name: Parse and upload JON Agent configuration
+  template:
+    src: "rhq-agent-env.sh.j2"
+    dest: "{{autologic_jon_agent_extract_to_path}}/jon-agent/rhq-agent/bin/rhq-agent-env.sh"
+    owner: "{{autologic_jon_username}}"
+    group: "{{autologic_jon_username}}"
+
+- name: Create a symbolic link to the wrapper/init script
+  file:
+    src: "{{autologic_jon_agent_extract_to_path}}/jon-agent/rhq-agent/bin/rhq-agent-wrapper.sh"
+    path: "/etc/init.d/rhq-agent-wrapper"
+    state: "link"
+    mode: 0755
