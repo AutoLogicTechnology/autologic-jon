@@ -1,0 +1,7 @@
+---
+
+- include: software.yaml
+  when:
+    - jon_manage_software
+  tags:
+    - jon_software_play

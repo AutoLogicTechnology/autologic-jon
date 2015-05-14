@@ -1,0 +1,16 @@
+---
+
+jon_manage_software: true
+jon_manage_services: true
+
+jon_agent_repository_url: "http://10.50.14.23/files"
+jon_agent_repository_file: "jon-agent.tar.gz"
+
+jon_rhq_configuration:
+  # You should actual configuration flags here;
+  # These are written to the config file exactly as you see them here.
+
+  RHQ_AGENT_HOME: "/u01/jboss/jon-agent/rhq-agent"
+  RHQ_JAVA_HOME: "/usr/java/jdk1.7.0_75"
+  RHQ_AGENT_START_COMMAND: "su -m jboss -c '${RHQ_AGENT_HOME}/bin/rhq-agent.sh'"
+  RHQ_AGENT_UMASK: 007

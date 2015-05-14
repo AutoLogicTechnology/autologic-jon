@@ -1,0 +1,12 @@
+---
+
+- name: Download the JON agent from our repository
+  get_url:
+    url: "{{jon_agent_repository_url}}/{{jon_agent_repository_file}}"
+    dest: "/tmp/"
+    mode: 0600
+
+- name: Decompress archive
+  unarchive:
+    src: "/tmp/{{jon_agent_repository_file}}"
+    dest: "/u01/"
