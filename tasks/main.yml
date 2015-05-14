@@ -1,6 +1,6 @@
 ---
 
-- include: software.yaml
+- include: software.yml
   when:
     - jon_manage_software
   tags:
