@@ -17,6 +17,14 @@
     path: "{{autologic_jon_agent_extract_to_path}}/jon-agent"
   register: have_extracted_archive
 
+- name: Check our target extraction path exists/create it
+  file:
+    path: "{{autologic_jon_agent_extract_to_path}}"
+    state: "directory"
+    owner: "{{autologic_jon_username}}"
+    group: "{{autologic_jon_username}}"
+    mode: 0775
+
 - name: Decompress archive
   unarchive:
     src: "/tmp/{{autologic_jon_agent_repository_file}}"

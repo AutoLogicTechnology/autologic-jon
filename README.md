@@ -4,7 +4,7 @@ This role deploys the JON Agent. It's simple by nature, and just get the agent i
 
 ## Version
 
-0.1.0
+0.1.1
 
 ## Requirements
 
