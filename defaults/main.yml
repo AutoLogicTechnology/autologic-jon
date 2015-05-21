@@ -8,6 +8,9 @@ autologic_jon_manage_user: true
 autologic_jon_agent_repository_url: "http://192.168.1.1:8000"
 autologic_jon_agent_repository_file: "jon-agent.tar.gz"
 autologic_jon_agent_extract_to_path: "/autologic"
+autologic_jon_agent_local_port: 16163
+autologic_jon_agent_remote_rhq_hostname: "http://some-address"
+autologic_jon_agent_remote_rhq_port: 7080
 
 autologic_jon_username: "jboss"
 autologic_jon_username_uid: "5000"

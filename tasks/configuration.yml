@@ -7,9 +7,24 @@
     owner: "{{autologic_jon_username}}"
     group: "{{autologic_jon_username}}"
 
+- name: Parse and upload the JON Agent answers file
+  template:
+    src: "answers.txt.j2"
+    dest: "/tmp/rhq-agent-answers.txt"
+    owner: "{{autologic_jon_username}}"
+    group: "{{autologic_jon_username}}"
+
 - name: Create a symbolic link to the wrapper/init script
   file:
     src: "{{autologic_jon_agent_extract_to_path}}/jon-agent/rhq-agent/bin/rhq-agent-wrapper.sh"
     path: "/etc/init.d/rhq-agent-wrapper"
     state: "link"
     mode: 0755
+
+- name: Execute the RHQ Agent and configure the local system
+  command: "{{autologic_jon_agent_extract_to_path}}/jon-agent/rhq-agent/bin/ --input=/tmp/rhq-agent-answers.txt"
+
+- name: Remove the answers file after use 
+  file:
+    path: "/tmp/rhq-agent-answers.txt"
+    state: "absent"
